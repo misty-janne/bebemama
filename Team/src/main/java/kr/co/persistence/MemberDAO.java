@@ -21,6 +21,8 @@ public interface MemberDAO {
 
 	MemberDTO loginpost(LoginDTO login);
 
+	int idChk(MemberDTO dto);
+
 	
 	
 }

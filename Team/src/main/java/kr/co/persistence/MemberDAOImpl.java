@@ -70,5 +70,11 @@ public class MemberDAOImpl implements MemberDAO {
 	public MemberDTO loginpost(LoginDTO login) {		
 		return session.selectOne(NS+".loginpost", login);
 	}
+	
+	@Override
+	public int idChk(MemberDTO dto) {
+		// TODO Auto-generated method stub
+		return session.selectOne(NS + ".idChk", dto);
+	}
 
 }

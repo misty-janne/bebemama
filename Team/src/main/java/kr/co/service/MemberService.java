@@ -21,6 +21,8 @@ public interface MemberService {
 
 	MemberDTO loginpost(LoginDTO login);
 
+	int idChk(MemberDTO dto);
+
 	
 
 }

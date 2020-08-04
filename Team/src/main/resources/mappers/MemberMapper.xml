@@ -34,4 +34,7 @@
 		select * from member where id = #{id} and pw = #{pw}
 	</select>
 	
+	<select id="idChk" resultType="int">
+		select count(*) from member where id = #{id}
+	</select>
 </mapper>

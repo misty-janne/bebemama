@@ -58,4 +58,10 @@ public class MemberServiceImpl implements MemberService{
 	public MemberDTO loginpost(LoginDTO login) {
 		return memberDao.loginpost(login);
 	}
+	
+	@Override
+	public int idChk(MemberDTO dto) {
+		// TODO Auto-generated method stub
+		return memberDao.idChk(dto);
+	}
 }

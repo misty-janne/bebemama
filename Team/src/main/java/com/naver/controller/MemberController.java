@@ -10,6 +10,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
 
@@ -113,9 +114,13 @@ public class MemberController {
 	@RequestMapping(value = "/insert", method = RequestMethod.POST)
 	public String insert(MemberDTO dto) {
 		
-		memberService.insert(dto);
-//		└컨트롤러는 서비스를 거쳐서 dao로 연결된다
+		int idChk = memberService.idChk(dto);
 		
+		if (idChk == 1) {
+			return "/member/insert";
+		} else if (idChk == 0) {
+			memberService.insert(dto);
+		}
 		
 		return "redirect:/member/list";
 	}
@@ -123,6 +128,14 @@ public class MemberController {
 	@RequestMapping(value = "/insert", method = RequestMethod.GET)
 	public String insert() {
 		return "member/insert";
+		
+		
+	}
+	
+	@ResponseBody
+	@RequestMapping(value = "/idChk", method = RequestMethod.POST)
+	public int idChk(MemberDTO dto) {
+		return memberService.idChk(dto);
 	}
 	
 }
