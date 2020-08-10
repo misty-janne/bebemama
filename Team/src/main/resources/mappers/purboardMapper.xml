@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="p.u.r">
+
+	<select id="getPno" resultType="Integer">
+		select max(pno) from purchase_board
+	</select>
+
+	<insert id="insert">
+		insert into purchase_board (pno, id, cno, gno, deliveryCode)
+		values (#{pno}, #{id}, #{cno}, #{gno}, #{deliveryCode})
+	</insert>
+	
+	<select id="list" resultType="PurBoardDTO">
+		select * from purchase_board
+	</select>
+
+	<select id="mylist" resultType="PurBoardDTO">
+		select * from purchase_board
+		where id = #{id}
+		order by pno desc
+	</select>
+
+	<delete id="delete">
+		delete from purchase_board where pno = #{pno}
+	</delete>
+	
+	<select id="getAmount" resultType="Integer">
+		select count(pno) from purchase_board
+	</select>
+	
+</mapper>
+

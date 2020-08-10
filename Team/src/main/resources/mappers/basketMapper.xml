@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="b.a.s">
+
+	<select id="getBsno" resultType="Integer">
+		select max(bsno) from basket
+	</select>
+
+	<insert id="insert">
+		insert into basket (bsno, id, cno, gno)
+		values (#{bsno}, #{id}, #{cno}, #{gno})
+	</insert>
+	
+	<select id="mylist" resultType="BasketDTO">
+		select * from basket
+		natural join category natural join goods natural join attach natural join board
+		where id = #{id}
+		order by bsno desc
+	</select>
+	
+	<select id="getAmount" resultType="Integer">
+		select count(bsno) from basket
+	</select>	
+	
+</mapper>
+
