@@ -14,7 +14,7 @@ import kr.co.persistence.MemberDAO;
 public class MemberServiceImpl implements MemberService{
 	@Inject
 	private MemberDAO memberDao;
-//			└인터페이스 구현
+//			�뵒�씤�꽣�럹�씠�뒪 援ы쁽
 
 	@Override
 	public void insert(MemberDTO dto) {
@@ -63,5 +63,25 @@ public class MemberServiceImpl implements MemberService{
 	public int idChk(MemberDTO dto) {
 		// TODO Auto-generated method stub
 		return memberDao.idChk(dto);
+	}
+
+
+
+	@Override
+	public int selectGrno(String auth) {
+		// TODO Auto-generated method stub
+		return memberDao.selectGrno(auth);
+	}
+
+	@Override
+	public MemberDTO selectMeberDTO(String id) {
+		// TODO Auto-generated method stub
+		return memberDao.selectMeberDTO(id);
+	}
+
+	@Override
+	public int updateGrno(MemberDTO originalDTO) {
+		// TODO Auto-generated method stub
+		return memberDao.updateGrno(originalDTO);
 	}
 }

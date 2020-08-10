@@ -23,6 +23,14 @@ public interface MemberService {
 
 	int idChk(MemberDTO dto);
 
+
+
+	int selectGrno(String auth);
+
+	MemberDTO selectMeberDTO(String id);
+
+	int updateGrno(MemberDTO originalDTO);
+
 	
 
 }

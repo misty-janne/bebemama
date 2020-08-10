@@ -9,7 +9,7 @@ import org.springframework.stereotype.Repository;
 import kr.co.domain.LoginDTO;
 import kr.co.domain.MemberDTO;
 
-@Repository //객체를 만들겠다는 표시
+@Repository //媛앹껜瑜� 留뚮뱾寃좊떎�뒗 �몴�떆
 public class MemberDAOImpl implements MemberDAO {
 	
 	@Autowired
@@ -22,7 +22,7 @@ public class MemberDAOImpl implements MemberDAO {
 	@Override
 	public void insert(MemberDTO dto) {
 //		session.insert(statement, parameter);
-//						└mapper의 id
+//						�뵒mapper�쓽 id
 		session.insert(NS+".insert", dto);
 		
 	}
@@ -31,7 +31,7 @@ public class MemberDAOImpl implements MemberDAO {
 
 	@Override
 	public List<MemberDTO> list() {
-//		return session.selectList(statement, parameter, rowBounds); //페이징처리 경우
+//		return session.selectList(statement, parameter, rowBounds); //�럹�씠吏뺤쿂由� 寃쎌슦
 		return session.selectList(NS+".list");
 	}
 
@@ -75,6 +75,31 @@ public class MemberDAOImpl implements MemberDAO {
 	public int idChk(MemberDTO dto) {
 		// TODO Auto-generated method stub
 		return session.selectOne(NS + ".idChk", dto);
+	}
+
+
+
+	@Override
+	public int selectGrno(String auth) {
+		// TODO Auto-generated method stub
+	
+		return session.selectOne(NS+".selectGrno", auth);
+	}
+
+
+
+	@Override
+	public MemberDTO selectMeberDTO(String id) {
+		// TODO Auto-generated method stub
+		return session.selectOne(NS+".selectMeberDTO", id);
+	}
+
+
+
+	@Override
+	public int updateGrno(MemberDTO originalDTO) {
+		// TODO Auto-generated method stub
+		return session.update(NS+".updateGrno", originalDTO);
 	}
 
 }

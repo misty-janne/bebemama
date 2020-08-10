@@ -10,7 +10,7 @@
 	</insert>
 
 	<select id="list" resultType="MemberDTO">
-		select * from member order by id asc
+		select * from member natural join grants order by id asc
 	</select>
 	
 	<select id="read" resultType="MemberDTO">
@@ -37,4 +37,19 @@
 	<select id="idChk" resultType="int">
 		select count(*) from member where id = #{id}
 	</select>
+	
+	<select id="selectGrno" resultType="int">
+	    select grno from grants where authority = #{authority}
+	</select>
+	
+	<select id="selectMeberDTO" resultType="MemberDTO">
+	    select * from member where id = #{id}
+	</select>
+	
+	<update id="updateGrno">
+	update member set grno = #{grno} where id = #{id}
+	</update>
+	
+	
+	
 </mapper>

@@ -38,27 +38,29 @@
 				</thead>
 				
 				<tbody>
-					<c:forEach items="${list }" var="dto">
+					<c:forEach  items="${list }" var="dto">
+					
 						<tr>
-							<td id="id">
-								<a href="/member/read/${dto.id }">${dto.id }</a>
+							<td class="id">
+								<a>${dto.id }</a>
 							</td>
 							<td>${dto.uname }</td>
-							<td id="authority_change">
-							<select id="authority" name="authority" class="form-control">
+							<td class="authority_change">
+							<select name="authority" class="form-control authority" >
 							<option value="${dto.authority }" selected>${dto.authority }</option>
 							<option value="consumer">consumer</option>
 							<option value="marketer">marketer</option>
 							<option value="ceo">ceo</option>
 							</select>
 							</td>
-						<c:if test="${login.authority.equals('admin')|| login.authority.equals('ceo')}">
+						<c:if test="${login.grno == 3 || login.grno == 2}">
 							<td>						
-							<button id="change_btn">권한변경</button>
+							<button class="change_btn" value =" ${dto.id}" }>권한변경</button>
 							</td>
 							<td><button onclick="location.href='/member/delete/${dto.id}'">탈퇴</button></td>
 						</c:if>
 						</tr>
+					
 					</c:forEach>
 				</tbody>
 			</table>
@@ -71,32 +73,45 @@
 	$(document).ready(function(){
 
 
-		
-		$("#change_btn").click(function(event){
-			event.preventDefault();
-			var that = $("this")
-			var id = that.parent("td").parent("tr").$("#id");
+
+
+			var auth = ""
 			
-			$.ajax({
-				type: 'post',
-				url: '/modeajax',
-				dataType: 'text,
-				data: {
-					id : id
-				},
-				success: function(result){
-
-					alert("ok");
-					
-				},
-				error function(request, status, error){
-					console.log(error);
-
-				}
-
+			$(".authority").change(function(){
+				auth = $(this).val();
+				
+			
 			});
+		  
+            
+			 $(".change_btn").click(function(){
+				
+				var id = $(this).val();
+		
+				 
+				 $.ajax({
+					 type:'put',
+					 url:'/changeAuthority/'+id,
+					 dataType : 'text',
+					 headers:{
+						 'Content-Type':'application/json','X-HTTP-Method-Override':'PUT'
+						 },
 
-		});
+					data:JSON.stringify({
+						auth : auth
+						}),
+					success:function(result){
+						if(result === "success"){
+
+						alert(" 변경되었습니다.");
+							}
+						}
+
+
+					 });
+					
+			});
+		
 
 	});
 

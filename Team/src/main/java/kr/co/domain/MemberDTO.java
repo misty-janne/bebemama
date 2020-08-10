@@ -13,7 +13,24 @@ public class MemberDTO implements Serializable {
 	private String uname;
 	private int phone;
 	private String addr;
+	private int grno;
 	private String authority;
+
+
+	
+
+	public MemberDTO(String id, String pw, String uname, int phone, String addr, int grno, String authority) {
+		super();
+		this.id = id;
+		this.pw = pw;
+		this.uname = uname;
+		this.phone = phone;
+		this.addr = addr;
+		this.grno = grno;
+		this.authority = authority;
+	}
+
+
 
 
 	public MemberDTO() {
@@ -31,6 +48,14 @@ public class MemberDTO implements Serializable {
 		this.authority = authority;
 	}
 
+	public int getGrno() {
+		return grno;
+	}
+
+
+	public void setGrno(int grno) {
+		this.grno = grno;
+	}
 
 	public String getId() {
 		return id;
