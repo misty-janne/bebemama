@@ -9,6 +9,7 @@ public class PurBoardDTO implements Serializable {
 	 */
 	private static final long serialVersionUID = 1L;
 	private int pno;
+	private int bsno;
 	private String id;
 	private int cno;
 	private int gno;
@@ -17,7 +18,7 @@ public class PurBoardDTO implements Serializable {
 	public PurBoardDTO() {
 		// TODO Auto-generated constructor stub
 	}
-	public PurBoardDTO(int pno, String id, int cno, int gno, String deliveryCode, String purDate) {
+	public PurBoardDTO(int pno, String id, int cno, int gno, String deliveryCode, String purDate, int bsno) {
 		super();
 		this.pno = pno;
 		this.id = id;
@@ -25,6 +26,16 @@ public class PurBoardDTO implements Serializable {
 		this.gno = gno;
 		this.deliveryCode = deliveryCode;
 		this.purDate = purDate;
+		this.bsno = bsno;
+	}
+	
+	
+	
+	public int getBsno() {
+		return bsno;
+	}
+	public void setBsno(int bsno) {
+		this.bsno = bsno;
 	}
 	public int getPno() {
 		return pno;
@@ -67,7 +78,7 @@ public class PurBoardDTO implements Serializable {
 	}
 	@Override
 	public String toString() {
-		return "PurBoardDTO [pno=" + pno + ", id=" + id + ", cno=" + cno + ", gno=" + gno + ", deliveryCode="
+		return "PurBoardDTO [pno=" + pno + ", bsno=" + bsno + ", id=" + id + ", cno=" + cno + ", gno=" + gno + ", deliveryCode="
 				+ deliveryCode + ", purDate=" + purDate + "]";
 	}
 	

@@ -23,6 +23,21 @@
 	<select id="getAmount" resultType="Integer">
 		select count(bsno) from basket
 	</select>	
+
+	<select id="priceList" resultType="BasketDTO">
+		select sum(price) from basket
+		natural join goods
+		where id = #{id}
+	</select>
+	
+	<delete id="delete">
+		delete from basket where bsno = #{bsno} 
+	</delete>
+	
+	<select id="read" resultType="BasketDTO">
+		select * from basket
+		where bsno = ${value}
+	</select>
 	
 </mapper>
 

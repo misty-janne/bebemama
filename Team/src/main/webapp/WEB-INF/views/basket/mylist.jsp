@@ -18,22 +18,14 @@
 <title>Insert title here</title>
 </head>
 <script type="text/javascript">
-	function managerdelete(bno) {
+	function managerdelete(bsno) {
 		var isOk = confirm("삭제하시겠습니까?");
 		if (isOk == true) {
 			location.href = "/basket/delete/" + bsno;
 		}
 	}
 
-	function addPrice() {
-		totalPrice = 0;
 
-		$(".price").each(function(){
-			totalPrice += Number($(this).val());
-			
-		});
-		$("p").append(parseInt(totalPrice));
-	}
 
 
 </script>
@@ -90,8 +82,7 @@
 							<td class="td-center">
 								1 개
 							</td>
-							<td class="td-center">
-							<input hidden class="price" value="${dto.price }">
+							<td class="td-center">							
 								<b><fmt:formatNumber value="${dto.price}" type="number"/> 원</b>
 							</td>
 							<td class="td-center"><button onclick="managerdelete('${dto.bsno}')">삭제</button></td>
@@ -103,7 +94,11 @@
 			</table>
 		</div><!-- class = row (table) -->
 
-		총결제비용: ${totalPrice }
+		<hr style="background-color: black; height: 2px;">
+		<h3 align="right">
+		<b>Total　:　
+		<fmt:formatNumber value="${totalPrice}" type="number"/> 원</b>
+		</h3>
 
 		<div class="row text-center">
 		<nav aria-label="Page navigation">

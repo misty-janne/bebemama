@@ -30,7 +30,7 @@ public class MemberController {
 	
 	@RequestMapping(value = "/logout", method = RequestMethod.GET)
 	public String logout(SessionStatus status) {		
-		status.setComplete();		
+		status.setComplete();
 		return "redirect:/board/list";
 	}
 	
