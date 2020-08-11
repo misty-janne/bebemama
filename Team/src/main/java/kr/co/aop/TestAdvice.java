@@ -12,6 +12,7 @@ import org.springframework.stereotype.Component;
 @Aspect //app를 위한 advice임을 지칭
 public class TestAdvice {
 	
+	
 	@Around("execution(* kr.co.service.AOPTestService*.*(..))")
 	public void duration(ProceedingJoinPoint pjp) throws Throwable {
 //															└Exception보다 상위
